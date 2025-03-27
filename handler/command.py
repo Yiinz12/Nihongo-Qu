@@ -13,7 +13,49 @@ logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
-
+    user_id = update.effective_user.id
+    
+    # Check if user is in group A (replace GROUP_A_ID with your actual group ID)
+    GROUP_A_ID = -1002610032457  # Replace with your actual Group A ID
+    GROUP_A_LINK = "https://t.me/BBJ_indonesia"  # Replace with your actual group invite link
+    
+    try:
+        # Try to get user's status in the group
+        member = await context.bot.get_chat_member(GROUP_A_ID, user_id)
+        
+        # Check if user is a member of the group (not left or kicked)
+        if member.status in ['creator', 'administrator', 'member', 'restricted']:
+            # User is in Group A, proceed with the bot
+            pass
+        else:
+            # User is not in Group A - send message with button to join group
+            keyboard = [[InlineKeyboardButton("Belajar Bahasa Jepang", url=GROUP_A_LINK)]]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            await update.message.reply_text(
+                "Kamu harus menjadi anggota grup terlebih dahulu.",
+                reply_markup=reply_markup
+            )
+            return
+            
+    except Exception as e:
+        # Error checking membership or user not in the group - provide button to join
+        keyboard = [[InlineKeyboardButton("Belajar Bahasa Jepang", url=GROUP_A_LINK)]]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        
+        await update.message.reply_text(
+            "Kamu harus menjadi anggota grup terlebih dahulu.",
+            reply_markup=reply_markup
+        )
+        logger.warning(f"Error checking user membership: {e}")
+        return
+            
+    except Exception as e:
+        # Error checking membership or user not in the group
+        await update.message.reply_text("Kamu harus menjadi anggota grup terlebih dahulu.")
+        logger.warning(f"Error checking user membership: {e}")
+        return
+        
     # Cek apakah chat berada di grup atau tidak
     if update.effective_chat.type != 'private':
         await update.message.reply_text("❌ Kuis ini hanya bisa didalam bot\ngunakan /start_group untuk didalam grup.")
