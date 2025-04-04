@@ -46,6 +46,22 @@ async def button(update: Update, context):
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
             await query.edit_message_text(text="Pilih jenis quiz Kanji:", reply_markup=reply_markup)
+        
+        elif query.data == 'kotoba':
+            keyboard = [
+                [InlineKeyboardButton("Kotoba N5", callback_data='kotoba_n5')],
+                [InlineKeyboardButton("Kotoba N4", callback_data='kotoba_n4')],
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            await query.edit_message_text(text="Pilih jenis quiz Kotoba:", reply_markup=reply_markup)
+        
+        elif query.data == 'kotoba_n5':
+            keyboard = [
+                [InlineKeyboardButton("Part 01\n(Tubuh dan kesehatan)", callback_data='kotoba_n5_part_01')],
+                [InlineKeyboardButton("Part 02\n(Waktu)", callback_data='kotoba_n5_part_02')],
+            ]
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            await query.edit_message_text(text="Pilih jenis quiz Kotoba:", reply_markup=reply_markup)
 
         elif query.data == 'hiragana_basic' or query.data == 'hiragana_all':
             await start_quiz(update, context, query.data)
@@ -55,6 +71,10 @@ async def button(update: Update, context):
         
         elif query.data == 'kanji_n5' or query.data == 'kanji_n4':
             await start_quiz(update, context, query.data)
+        
+        elif query.data == 'kotoba_n5_part_01' or query.data == 'kotoba_n5_part_02':
+            await start_quiz(update, context, query.data)
+        
 
     # Pastikan pesan berasal dari grup
     elif update.effective_chat.type == 'supergroup':
