@@ -1,9 +1,11 @@
 import logging
+import re  # Tambahkan di bagian atas file untuk regex
 import random  # Import random untuk mengacak soal
 import time  # Import time untuk menghitung durasi kuis
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from quiz.quiz import hiragana_quiz, katakana_quiz, hiragana_quiz_full, katakana_quiz_full  # Mengimpor quiz Hiragana
 from quiz.quiz_kanji import kanji_n5_quiz, kanji_n4_quiz
+from quiz.quiz_kotoba_n5 import kotoba_n5_tubuh_kesehatan, kotoba_n5_waktu  # Mengimpor quiz Kotoba N5
 from telegram.ext import ConversationHandler, ContextTypes
 from config.constants import user_quiz_data
 
@@ -41,19 +43,32 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE, quiz_ty
         }
 
     # Tentukan soal berdasarkan pilihan jenis kuis
+    questions = []
     if quiz_type == 'hiragana_basic':
-        user_quiz_data[chat_id]["quiz_questions"] = hiragana_quiz.copy()  # Gunakan hiragana_quiz untuk Basic
+        questions = hiragana_quiz.copy()
     elif quiz_type == 'hiragana_all':
-        user_quiz_data[chat_id]["quiz_questions"] = hiragana_quiz_full.copy()  # Gunakan hiragana_quiz_full untuk All
+        questions = hiragana_quiz_full.copy()
     elif quiz_type == 'katakana_basic':
-        user_quiz_data[chat_id]["quiz_questions"] = katakana_quiz.copy()  # Gunakan katakana_quiz untuk Basic
+        questions = katakana_quiz.copy()
     elif quiz_type == 'katakana_all':
-        user_quiz_data[chat_id]["quiz_questions"] = katakana_quiz_full.copy()  # Gunakan katakana_quiz_full untuk All
+        questions = katakana_quiz_full.copy()
     elif quiz_type == 'kanji_n5':
-        user_quiz_data[chat_id]["quiz_questions"] = kanji_n5_quiz.copy()  # Gunakan kanji_n5_quiz untuk Kanji N5
+        questions = kanji_n5_quiz.copy()
     elif quiz_type == 'kanji_n4':
-        user_quiz_data[chat_id]["quiz_questions"] = kanji_n4_quiz.copy()  # Gunakan kanji_n5_quiz untuk Kanji N4
-
+        questions = kanji_n4_quiz.copy()
+    elif quiz_type == 'kotoba_n5_part_01':
+        questions = kotoba_n5_tubuh_kesehatan.copy()
+    elif quiz_type == 'kotoba_n5_part_02':
+        questions = kotoba_n5_waktu.copy()
+    
+    # Preprocessing untuk ekstraksi hiragana dari description
+    for q in questions:
+        if "description" in q and "Hiragana:" in q["description"]:
+            hiragana_match = re.search(r"Hiragana:\s+(\S+)", q["description"])
+            if hiragana_match:
+                q["hiragana"] = hiragana_match.group(1)
+    
+    user_quiz_data[chat_id]["quiz_questions"] = questions
     random.shuffle(user_quiz_data[chat_id]["quiz_questions"])  # Mengacak soal
     user_quiz_data[chat_id]["total_quiz"] = len(user_quiz_data[chat_id]["quiz_questions"])  # Simpan total soal
 
@@ -62,13 +77,23 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE, quiz_ty
         await update.callback_query.edit_message_text("Tidak ada soal yang tersedia untuk kuis ini.")
         return ConversationHandler.END
 
-    question = user_quiz_data[chat_id]["quiz_questions"][0]["question"]  # Soal pertama
+    current_question = user_quiz_data[chat_id]["quiz_questions"][0]
+    question = current_question["question"]
     logger.info(f"Question to ask: {question}")
     
     await update.callback_query.edit_message_text(f"Permainan akan segera dimulai!")
     logger.info("Question start.")
-
-    await update.callback_query.message.reply_text(f"{question}\nSilakan jawab:")
+    
+    # Tambahkan hiragana dengan spoiler jika tersedia
+    hiragana_text = ""
+    if "hiragana" in current_question:
+        hiragana_text = f"\n<tg-spoiler>Hiragana: {current_question['hiragana']}</tg-spoiler>"
+    
+    # Kirim pertanyaan dengan hiragana spoiler jika ada
+    await update.callback_query.message.reply_text(
+        f"{question}{hiragana_text}\nSilakan jawab:", 
+        parse_mode="HTML"
+    )
     logger.info("Question sent to user.")
 
     # Mengirimkan pesan pemberitahuan sebelum kuis dimulai
@@ -169,7 +194,17 @@ async def check_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Lanjutkan soal berikutnya atau selesai
     if user_quiz_data[chat_id]["quiz_questions"]:
         next_question = user_quiz_data[chat_id]["quiz_questions"][0]["question"]
-        await update.message.reply_text(f"Soal berikutnya:\n{next_question}")
+        
+        # Tambahkan hiragana dengan spoiler jika tersedia
+        hiragana_text = ""
+        if "hiragana" in user_quiz_data[chat_id]["quiz_questions"][0]:
+            hiragana = user_quiz_data[chat_id]["quiz_questions"][0]["hiragana"]
+            hiragana_text = f"\n<tg-spoiler>Hiragana: {hiragana}</tg-spoiler>"
+        
+        await update.message.reply_text(
+            f"Soal berikutnya:\n{next_question}{hiragana_text}", 
+            parse_mode="HTML"
+        )
         logger.info(f"Next question: {next_question}")
         return QUIZ
     else:
