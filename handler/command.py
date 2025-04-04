@@ -79,6 +79,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Quiz Hiragana", callback_data='hiragana')],
         [InlineKeyboardButton("Quiz Katakana", callback_data='katakana')],
         [InlineKeyboardButton("Quiz Kanji", callback_data='kanji')],
+        [InlineKeyboardButton("Quiz Kotoba", callback_data='kotoba')],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
