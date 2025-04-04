@@ -3,7 +3,7 @@ import random  # Import random untuk mengacak soal
 import time  # Import time untuk menghitung durasi kuis
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from quiz.quiz import hiragana_quiz, katakana_quiz, hiragana_quiz_full, katakana_quiz_full  # Mengimpor quiz Hiragana
-from quiz.quiz_kanji import kanji_n5_quiz
+from quiz.quiz_kanji import kanji_n5_quiz, kanji_n4_quiz
 from telegram.ext import ConversationHandler, ContextTypes
 from config.constants import user_quiz_data
 
@@ -52,6 +52,8 @@ async def start_quiz_group(update: Update, context: ContextTypes.DEFAULT_TYPE, q
         user_quiz_data[chat_id]["quiz_questions"] = katakana_quiz_full.copy()  # Gunakan katakana_quiz_full untuk All
     elif quiz_type == 'kanji_n5':
         user_quiz_data[chat_id]["quiz_questions"] = kanji_n5_quiz.copy()  # Gunakan kanji_n5_quiz untuk Kanji N5
+    elif quiz_type == 'kanji_n4':
+        user_quiz_data[chat_id]["quiz_questions"] = kanji_n4_quiz.copy()  # Gunakan kanji_n4_quiz untuk Kanji N4
 
     random.shuffle(user_quiz_data[chat_id]["quiz_questions"])  # Mengacak soal
     user_quiz_data[chat_id]["total_quiz"] = len(user_quiz_data[chat_id]["quiz_questions"])  # Simpan total soal
