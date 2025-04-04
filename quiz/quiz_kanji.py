@@ -850,3 +850,117 @@ kanji_n5_quiz = [
         "link": "https://t.me/Kanji_N5_BBJ/81"
     },
 ]
+
+kanji_n4_quiz = [
+    {
+        "question": "Apa arti dari | 会 |",
+        "answer": "bertemu, berkumpul, rapat, asosiasi",
+        "description": (
+            "Kanji: 会\n"
+            "Onyomi: カイ, エ\n"
+            "Kunyomi: あ, あう\n"
+            "Artinya: Bertemu, Berkumpul, Rapat, Asosiasi"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/2"
+    },
+    {
+        "question": "Apa arti dari | 新 |",
+        "answer": "baru",
+        "description": (
+            "Kanji: 新\n"
+            "Onyomi: シン\n"
+            "Kunyomi: あたら, あたらしい, にい\n"
+            "Artinya: Baru"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/4"
+    },
+    {
+        "question": "Apa arti dari | 立 |",
+        "answer": "berdiri, mendirikan, posisi",
+        "description": (
+            "Kanji: 立\n"
+            "Onyomi: リツ, リュウ\n"
+            "Kunyomi: た, たつ\n"
+            "Artinya: Berdiri, Mendirikan, Posisi"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/5"
+    },
+    {
+        "question": "Apa arti dari | 手 |",
+        "answer": "tangan",
+        "description": (
+            "Kanji: 手\n"
+            "Onyomi: シュ\n"
+            "Kunyomi: て, た\n"
+            "Artinya: Tangan"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/6"
+    },
+    {
+        "question": "Apa arti dari | 目 |",
+        "answer": "mata, pandangan, nomor, urutan",
+        "description": (
+            "Kanji: 目\n"
+            "Onyomi: モク, ボク\n"
+            "Kunyomi: め, ま\n"
+            "Artinya: Mata, Pandangan, Nomor, Urutan"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/7"
+    },
+    {
+        "question": "Apa arti dari | 言 |",
+        "answer": "berkata, mengatakan, kata, bahasa",
+        "description": (
+            "Kanji: 言\n"
+            "Onyomi: ゲン, ゴン\n"
+            "Kunyomi: い, いう\n"
+            "Artinya: Berkata, Mengatakan, Kata, Bahasa"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/8"
+    },
+    {
+        "question": "Apa arti dari | 多 |",
+        "answer": "banyak, sering",
+        "description": (
+            "Kanji: 多\n"
+            "Onyomi: タ\n"
+            "Kunyomi: おお, おおい\n"
+            "Artinya: Banyak, Sering"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/9"
+    },
+    {
+        "question": "Apa arti dari | 安 |",
+        "answer": "murah, tenang, damai, santai",
+        "description": (
+            "Kanji: 安\n"
+            "Onyomi: アン\n"
+            "Kunyomi: やす, やすい\n"
+            "Artinya: Murah, Tenang, Damai, Santai"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/10"
+    },
+    {
+        "question": "Apa arti dari | 道 |",
+        "answer": "jalan, cara, jalur, aliran",
+        "description": (
+            "Kanji: 道\n"
+            "Onyomi: ドウ, トウ\n"
+            "Kunyomi: みち\n"
+            "Artinya: Jalan, Cara, Jalur, Aliran"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/11"
+    },
+    {
+        "question": "Apa arti dari | 社 |",
+        "answer": "perusahaan, masyarakat, kuil Shinto",
+        "description": (
+            "Kanji: 社\n"
+            "Onyomi: シャ\n"
+            "Kunyomi: やしろ\n"
+            "Artinya: Perusahaan, Masyarakat, Kuil Shinto"
+        ),
+        "link": "https://t.me/Kanji_N4_BBJ/2"
+    }
+]
+
