@@ -3,7 +3,8 @@ import random  # Import random untuk mengacak soal
 import time  # Import time untuk menghitung durasi kuis
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from quiz.quiz import hiragana_quiz, katakana_quiz, hiragana_quiz_full, katakana_quiz_full  # Mengimpor quiz Hiragana
-from quiz.quiz_kanji import kanji_n5_quiz, kanji_n4_quiz
+from quiz.quiz_kanji_n5 import kanji_n5_quiz
+from quiz.quiz_kanji_n4 import kanji_n4_quiz  # Mengimpor quiz Kanji N5
 from telegram.ext import ConversationHandler, ContextTypes
 from config.constants import user_quiz_data
 

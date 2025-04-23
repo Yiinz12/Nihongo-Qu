@@ -4,7 +4,8 @@ import random  # Import random untuk mengacak soal
 import time  # Import time untuk menghitung durasi kuis
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from quiz.quiz import hiragana_quiz, katakana_quiz, hiragana_quiz_full, katakana_quiz_full  # Mengimpor quiz Hiragana
-from quiz.quiz_kanji import kanji_n5_quiz, kanji_n4_quiz
+from quiz.quiz_kanji_n5 import kanji_n5_quiz
+from quiz.quiz_kanji_n4 import kanji_n4_quiz  # Mengimpor quiz Kanji N4
 from quiz.quiz_kotoba_n5 import kotoba_n5_tubuh_kesehatan, kotoba_n5_waktu  # Mengimpor quiz Kotoba N5
 from telegram.ext import ConversationHandler, ContextTypes
 from config.constants import user_quiz_data
@@ -52,14 +53,6 @@ async def start_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE, quiz_ty
         questions = katakana_quiz.copy()
     elif quiz_type == 'katakana_all':
         questions = katakana_quiz_full.copy()
-    elif quiz_type == 'kanji_n5':
-        questions = kanji_n5_quiz.copy()
-    elif quiz_type == 'kanji_n4':
-        questions = kanji_n4_quiz.copy()
-    elif quiz_type == 'kotoba_n5_part_01':
-        questions = kotoba_n5_tubuh_kesehatan.copy()
-    elif quiz_type == 'kotoba_n5_part_02':
-        questions = kotoba_n5_waktu.copy()
     
     # Preprocessing untuk ekstraksi hiragana dari description
     for q in questions:

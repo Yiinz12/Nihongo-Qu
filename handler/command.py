@@ -3,6 +3,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CommandHandler, ContextTypes
 from config.constants import user_quiz_data
 from datetime import timedelta
+from database.database import add_user, get_user, get_top_users
 
 # Konfigurasi logging
 logging.basicConfig(
@@ -14,11 +15,13 @@ logger = logging.getLogger(__name__)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     user_id = update.effective_user.id
-    
+    user_full_name = update.effective_user.full_name  # Ambil nama lengkap pengguna
+
     # Check if user is in group A (replace GROUP_A_ID with your actual group ID)
     GROUP_A_ID = -1002610032457  # Replace with your actual Group A ID
     GROUP_A_LINK = "https://t.me/BBJ_indonesia"  # Replace with your actual group invite link
-    
+    # Tambahkan user ke database jika belum ada
+    add_user(telegram_id=user_id, username=user_full_name)
     try:
         # Try to get user's status in the group
         member = await context.bot.get_chat_member(GROUP_A_ID, user_id)
@@ -158,6 +161,49 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("ketik /start untuk memulai kuis.")
 
+
+# Fungsi untuk menampilkan profil user
+async def profile_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.message.from_user.id
+    user_data = get_user(telegram_id=user_id)
+    
+    if user_data:
+        exp = user_data['exp']
+        level = user_data['level']
+        exp_needed = level * 100  # Exp yang dibutuhkan untuk naik level berikutnya
+        
+        # Gunakan full_name daripada username
+        full_name = update.message.from_user.full_name or 'Tidak Diketahui'
+        
+        message = (
+            f"📊 Profil Pengguna\n\n"
+            f"Nama: {full_name}\n"
+            f"Level: {level}\n"
+            f"EXP: {exp}/{exp_needed}\n\n"
+            f"Terus berlatih untuk naik level!"
+        )
+        
+        await update.message.reply_text(message)
+    else:
+        await update.message.reply_text("Profil Anda belum terdaftar. Silakan mulai quiz terlebih dahulu.")
+
+# Fungsi untuk menampilkan peringkat top users
+async def leaderboard_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    top_users = get_top_users(limit=10)
+    
+    if top_users:
+        message = "🏆 Leaderboard - Top 10 Users 🏆\n\n"
+        
+        for i, user in enumerate(top_users, 1):
+            # Prioritaskan nama dari database, jika tidak ada gunakan ID
+            display_name = user['nama'] or f"User {user['telegram_id']}"
+            message += f"{i}. {display_name} - Level {user['level']} ({user['exp']} exp)\n"
+            
+        await update.message.reply_text(message)
+    else:
+        await update.message.reply_text("Belum ada data pengguna. Mulailah quiz untuk masuk ke leaderboard!")
+
+
 # Membuat handler untuk /start
 def get_start_handler():
     return CommandHandler('start', start)
@@ -168,3 +214,10 @@ def get_start_group_handler():
 
 def get_cancel_handler():
     return CommandHandler('cancel', cancel)
+
+# Tambahkan handler untuk command profile dan leaderboard
+def get_profile_handler():
+    return CommandHandler("profile", profile_command)
+
+def get_leaderboard_handler():
+    return CommandHandler("leaderboard", leaderboard_command)

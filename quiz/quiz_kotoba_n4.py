@@ -1,122 +1,276 @@
-# File data untuk quiz kotoba N5
 
-kotoba_n5_quiz = [
+kotoba_n4_quiz = [
     {
-        "kanji": "私",
-        "kana": "わたし",
-        "arti": "saya",
-        "deskripsi": ""
+        "question": "Apa arti dari | 体 |",
+        "answer": "tubuh",
+        "description": (
+            "Kanji: 体\n"
+            "Hiragana: からだ\n"
+            "Arti: tubuh"
+        ),
     },
     {
-        "kanji": "貴方",
-        "kana": "あなた",
-        "arti": "anda, kamu",
-        "deskripsi": "Sering juga ditulis hanya dengan hiragana あなた"
+        "question": "Apa arti dari | 頭 |",
+        "answer": "kepala",
+        "description": (
+            "Kanji: 頭\n"
+            "Hiragana: あたま\n"
+            "Arti: kepala"
+        ),
     },
     {
-        "kanji": "あの人",
-        "kana": "あのひと",
-        "arti": "orang itu, beliau",
-        "deskripsi": "あのかた adalah bentuk sopan dari あのひと"
+        "question": "Apa arti dari | 髪 |",
+        "answer": "rambut",
+        "description": (
+            "Kanji: 髪\n"
+            "Hiragana: かみ\n"
+            "Arti: rambut"
+        ),
     },
     {
-        "kanji": "～さん",
-        "kana": "～さん",
-        "arti": "sdr, bapak, ibu",
-        "deskripsi": "Akhiran kesopanan setelah nama"
+        "question": "Apa arti dari | 顔 |",
+        "answer": "wajah",
+        "description": (
+            "Kanji: 顔\n"
+            "Hiragana: かお\n"
+            "Arti: wajah"
+        ),
     },
     {
-        "kanji": "～ちゃん",
-        "kana": "～ちゃん",
-        "arti": "akhiran untuk anak",
-        "deskripsi": "Akhiran untuk anak laki-laki/perempuan, pengganti ～さん"
+        "question": "Apa arti dari | 目 |",
+        "answer": "mata",
+        "description": (
+            "Kanji: 目\n"
+            "Hiragana: め\n"
+            "Arti: mata"
+        ),
     },
     {
-        "kanji": "～人",
-        "kana": "～じん",
-        "arti": "orang",
-        "deskripsi": "Akhiran untuk menyatakan warga negara, Contoh: アメリカじん - orang Amerika Serikat"
+        "question": "Apa arti dari | 耳 |",
+        "answer": "telinga",
+        "description": (
+            "Kanji: 耳\n"
+            "Hiragana: みみ\n"
+            "Arti: telinga"
+        ),
     },
     {
-        "kanji": "先生",
-        "kana": "せんせい",
-        "arti": "guru, dosen",
-        "deskripsi": "Tidak dipakai jika menyebutkan pekerjaan sendiri"
+        "question": "Apa arti dari | 鼻 |",
+        "answer": "hidung",
+        "description": (
+            "Kanji: 鼻\n"
+            "Hiragana: はな\n"
+            "Arti: hidung"
+        ),
     },
     {
-        "kanji": "教師",
-        "kana": "きょうし",
-        "arti": "guru, dosen",
-        "deskripsi": ""
+        "question": "Apa arti dari | 口 |",
+        "answer": "mulut",
+        "description": (
+            "Kanji: 口\n"
+            "Hiragana: くち\n"
+            "Arti: mulut"
+        ),
     },
     {
-        "kanji": "学生",
-        "kana": "がくせい",
-        "arti": "mahasiswa, pelajar",
-        "deskripsi": ""
+        "question": "Apa arti dari | 歯 |",
+        "answer": "gigi",
+        "description": (
+            "Kanji: 歯\n"
+            "Hiragana: は\n"
+            "Arti: gigi"
+        ),
     },
     {
-        "kanji": "会社員",
-        "kana": "かいしゃいん",
-        "arti": "karyawan perusahaan",
-        "deskripsi": ""
+        "question": "Apa arti dari | 舌 |",
+        "answer": "lidah",
+        "description": (
+            "Kanji: 舌\n"
+            "Hiragana: した\n"
+            "Arti: lidah"
+        ),
     },
     {
-        "kanji": "社員",
-        "kana": "しゃいん",
-        "arti": "karyawan perusahaan",
-        "deskripsi": "Dipakai bersama nama perusahaan, Contoh: IMC の しゃいん"
+        "question": "Apa arti dari | 首 |",
+        "answer": "leher",
+        "description": (
+            "Kanji: 首\n"
+            "Hiragana: くび\n"
+            "Arti: leher"
+        ),
     },
     {
-        "kanji": "銀行員",
-        "kana": "ぎんこういん",
-        "arti": "pegawai bank",
-        "deskripsi": ""
+        "question": "Apa arti dari | 肩 |",
+        "answer": "bahu",
+        "description": (
+            "Kanji: 肩\n"
+            "Hiragana: かた\n"
+            "Arti: bahu"
+        ),
     },
     {
-        "kanji": "医者",
-        "kana": "いしゃ",
-        "arti": "dokter",
-        "deskripsi": ""
+        "question": "Apa arti dari | 腕 |",
+        "answer": "lengan",
+        "description": (
+            "Kanji: 腕\n"
+            "Hiragana: うで\n"
+            "Arti: lengan"
+        ),
     },
     {
-        "kanji": "研究者",
-        "kana": "けんきゅうしゃ",
-        "arti": "peneliti",
-        "deskripsi": ""
+        "question": "Apa arti dari | 手 |",
+        "answer": "tangan",
+        "description": (
+            "Kanji: 手\n"
+            "Hiragana: て\n"
+            "Arti: tangan"
+        ),
     },
     {
-        "kanji": "大学",
-        "kana": "だいがく",
-        "arti": "universitas",
-        "deskripsi": ""
+        "question": "Apa arti dari | 指 |",
+        "answer": "jari",
+        "description": (
+            "Kanji: 指\n"
+            "Hiragana: ゆび\n"
+            "Arti: jari"
+        ),
     },
     {
-        "kanji": "病院",
-        "kana": "びょういん",
-        "arti": "rumah sakit",
-        "deskripsi": ""
+        "question": "Apa arti dari | 足 |",
+        "answer": "kaki",
+        "description": (
+            "Kanji: 足\n"
+            "Hiragana: あし\n"
+            "Arti: kaki"
+        ),
     },
     {
-        "kanji": "誰",
-        "kana": "だれ",
-        "arti": "siapa",
-        "deskripsi": "どなた adalah bentuk sopan dari だれ"
+        "question": "Apa arti dari | 背 |",
+        "answer": "punggung",
+        "description": (
+            "Kanji: 背\n"
+            "Hiragana: せ\n"
+            "Arti: punggung"
+        ),
     },
     {
-        "kanji": "～歳",
-        "kana": "～さい",
-        "arti": "tahun",
-        "deskripsi": "Akhiran untuk usia"
+        "question": "Apa arti dari | お腹 |",
+        "answer": "perut",
+        "description": (
+            "Kanji: お腹\n"
+            "Hiragana: おなか\n"
+            "Arti: perut"
+        ),
     },
     {
-        "kanji": "何歳",
-        "kana": "なんさい",
-        "arti": "umur berapa",
-        "deskripsi": "おいくつ adalah bentuk sopan dari なんさい"
-    }
+        "question": "Apa arti dari | 胸 |",
+        "answer": "dada",
+        "description": (
+            "Kanji: 胸\n"
+            "Hiragana: むね\n"
+            "Arti: dada"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 心 |",
+        "answer": "hati, jiwa",
+        "description": (
+            "Kanji: 心\n"
+            "Hiragana: こころ\n"
+            "Arti: hati, jiwa"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 血 |",
+        "answer": "darah",
+        "description": (
+            "Kanji: 血\n"
+            "Hiragana: ち\n"
+            "Arti: darah"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 骨 |",
+        "answer": "tulang",
+        "description": (
+            "Kanji: 骨\n"
+            "Hiragana: ほね\n"
+            "Arti: tulang"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 皮 |",
+        "answer": "kulit",
+        "description": (
+            "Kanji: 皮\n"
+            "Hiragana: かわ\n"
+            "Arti: kulit"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 声 |",
+        "answer": "suara",
+        "description": (
+            "Kanji: 声\n"
+            "Hiragana: こえ\n"
+            "Arti: suara"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 汗 |",
+        "answer": "keringat",
+        "description": (
+            "Kanji: 汗\n"
+            "Hiragana: あせ\n"
+            "Arti: keringat"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 涙 |",
+        "answer": "air mata",
+        "description": (
+            "Kanji: 涙\n"
+            "Hiragana: なみだ\n"
+            "Arti: air mata"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 病気 |",
+        "answer": "penyakit",
+        "description": (
+            "Kanji: 病気\n"
+            "Hiragana: びょうき\n"
+            "Arti: penyakit"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 薬 |",
+        "answer": "obat",
+        "description": (
+            "Kanji: 薬\n"
+            "Hiragana: くすり\n"
+            "Arti: obat"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 熱 |",
+        "answer": "demam",
+        "description": (
+            "Kanji: 熱\n"
+            "Hiragana: ねつ\n"
+            "Arti: demam"
+        ),
+    },
+    {
+        "question": "Apa arti dari | 風邪 |",
+        "answer": "flu, masuk angin",
+        "description": (
+            "Kanji: 風邪\n"
+            "Hiragana: かぜ\n"
+            "Arti: flu, masuk angin"
+        ),
+    },
 ]
-
 
 kotoba_n5_waktu = [
     # Hari
@@ -547,37 +701,3 @@ kotoba_n5_waktu = [
         ),
     },
 ]
-
-kotoba_n5_tubuh_kesehatan = [
-    {
-        "question": "Apa arti dari | 体 |",
-        "answer": "tubuh",
-        "description": (
-            "Kanji: 体\n"
-            "Hiragana: からだ\n"
-            "Arti: tubuh"
-        ),
-    },
-    {
-        "question": "Apa arti dari | 頭 |",
-        "answer": "kepala",
-        "description": (
-            "Kanji: 頭\n"
-            "Hiragana: あたま\n"
-            "Arti: kepala"
-        ),
-    },
-    {
-        "question": "Apa arti dari | 髪 |",
-        "answer": "rambut",
-        "description": (
-            "Kanji: 髪\n"
-            "Hiragana: かみ\n"
-            "Arti: rambut"
-        ),
-    },
-    {
-        "question": "Apa arti dari | 顔 |",
-        "answer": "wajah",
-    }
-    ]
